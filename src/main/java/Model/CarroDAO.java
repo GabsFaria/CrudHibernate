@@ -1,19 +1,22 @@
 package Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Carro {
+@Table(name ="carro")
+public class CarroDAO {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name="id",schema = "CrudCarro")
+    @GeneratedValue(generator = "id",strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "nome",length = 50,nullable = false)
     private String nome;
+    @Column(name = "marca", length = 50, nullable = false)
     private String marca;
+    @Column(name = "ano", length = 4, nullable = false)
     private String ano;
+    @Column(name = "placaDoCarro",length = 8,nullable = false,unique = true)
     private String placa;
 
     public Integer getId() {
