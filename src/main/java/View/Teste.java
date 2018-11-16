@@ -8,23 +8,22 @@ import java.util.List;
 
 public class Teste {
     public static void main(String[] args) {
-//        PainelPrincipal pp = new PainelPrincipal();
-//        pp.painel();
-//        pp.botoes();
+          TextoPainelPrincipal text = new TextoPainelPrincipal();
+          text.inserirTexto();
 //        CarroDAO carroDAO = new CarroDAO();
 //        carroDAO.setNome(JOptionPane.showInputDialog("Digite o nome do carro"));
 //        carroDAO.setAno(JOptionPane.showInputDialog("Digite o ano do carro"));
 //        carroDAO.setMarca(JOptionPane.showInputDialog("Digite a marca do carro"));
 //        carroDAO.setPlaca(JOptionPane.showInputDialog("Digite a placa do carro"));
 //
-        CarroDAO carroDAO1 = new CarroDAO();
-        carroDAO1.setNome(JOptionPane.showInputDialog("Digite o nome do carro"));
-        carroDAO1.setAno(JOptionPane.showInputDialog("Digite o ano do carro"));
-        carroDAO1.setMarca(JOptionPane.showInputDialog("Digite a marca do carro"));
-        carroDAO1.setPlaca(JOptionPane.showInputDialog("Digite a placa do carro"));
-
-        CarroController carro = new CarroController();
-        carro.inserir(carroDAO1);
+//        CarroDAO carroDAO1 = new CarroDAO();
+//        carroDAO1.setNome(JOptionPane.showInputDialog("Digite o nome do carro"));
+//        carroDAO1.setAno(JOptionPane.showInputDialog("Digite o ano do carro"));
+//        carroDAO1.setMarca(JOptionPane.showInputDialog("Digite a marca do carro"));
+//        carroDAO1.setPlaca(JOptionPane.showInputDialog("Digite a placa do carro"));
+//
+//        CarroController carro = new CarroController();
+//        carro.inserir(carroDAO1);
 //        List<CarroDAO> list = carro.listar();
 //
 //        for (int i = 0; i<list.size(); i++) {

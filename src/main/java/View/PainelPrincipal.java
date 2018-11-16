@@ -5,22 +5,18 @@ import java.awt.*;
 
 public class PainelPrincipal {
 
-    JFrame janela;
+    private JFrame janela;
 
-    public void painel(){
+    public PainelPrincipal() {
         janela = new JFrame("Carro");
-        Container container = janela.getContentPane();
-        SpringLayout layout = new SpringLayout();
-        container.setLayout(layout);
+        janela.setLayout(null);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.pack();
-        janela.setSize(600,600);
+        janela.setSize(400,350);
         janela.setVisible(true);
     }
 
-    public void botoes(){
-        BotoesPrincipais botton = new BotoesPrincipais();
-        botton.botaoInserir();
+    public JFrame getJanela() {
+        return janela;
     }
-
 }
