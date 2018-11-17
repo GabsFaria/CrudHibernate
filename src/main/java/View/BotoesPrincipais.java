@@ -13,7 +13,7 @@ public class BotoesPrincipais{
         inserir.setBounds(10,100,150,40);
         inserir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                TextoInserir text = new TextoInserir();
+                BotoesPainelInserir button = new BotoesPainelInserir();
             }
         });
         painel.add(inserir);

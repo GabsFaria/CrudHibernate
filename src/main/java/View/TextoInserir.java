@@ -4,7 +4,6 @@ import javax.swing.*;
 
 public class TextoInserir{
     PainelInserir pi = new PainelInserir();
-    private JFrame janela = pi.getJanelaInserir();
 
     public TextoInserir() {
         JLabel nome = new JLabel("Nome:");
@@ -13,7 +12,7 @@ public class TextoInserir{
         escrevaNome.setBounds(65,20,150,20);
         JLabel marca = new JLabel("Marca:");
         marca.setBounds(20,45,40,20);
-        JTextField escrevaMarca = new JTextField(" Brand example",50);
+        JTextField escrevaMarca = new JTextField("Brand example",50);
         escrevaMarca.setBounds(65,45,150,20);
         JLabel ano = new JLabel("Ano:");
         ano.setBounds(20,70,40,20);
@@ -23,13 +22,13 @@ public class TextoInserir{
         placa.setBounds(20,95,40,20);
         JTextField escrevaPlaca = new JTextField("Board example",10);
         escrevaPlaca.setBounds(65,95,150,20);
-        janela.add(nome);
-        janela.add(escrevaNome);
-        janela.add(marca);
-        janela.add(escrevaMarca);
-        janela.add(ano);
-        janela.add(escrevaAno);
-        janela.add(placa);
-        janela.add(escrevaPlaca);
+        pi.getJanelaInserir().add(nome);
+        pi.getJanelaInserir().add(escrevaNome);
+        pi.getJanelaInserir().add(marca);
+        pi.getJanelaInserir().add(escrevaMarca);
+        pi.getJanelaInserir().add(ano);
+        pi.getJanelaInserir().add(escrevaAno);
+        pi.getJanelaInserir().add(placa);
+        pi.getJanelaInserir().add(escrevaPlaca);
     }
 }
