@@ -1,6 +1,8 @@
 package View;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class BotoesPrincipais{
     PainelPrincipal pp = new PainelPrincipal();
@@ -9,6 +11,11 @@ public class BotoesPrincipais{
     public void botaoInserir(){
         JButton inserir = new JButton("Novo Carro");
         inserir.setBounds(10,100,150,40);
+        inserir.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                TextoInserir text = new TextoInserir();
+            }
+        });
         painel.add(inserir);
     }
 
