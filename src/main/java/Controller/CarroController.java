@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.CarroDAO;
+import Model.CarroEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -13,33 +13,33 @@ public class CarroController {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("carro");
         EntityManager em = emf.createEntityManager();
 
-        public void inserir(CarroDAO carroDAO) {
+        public void inserir(CarroEntity carroEntity) {
             em.getTransaction().begin();
-            em.persist(carroDAO);
+            em.persist(carroEntity);
             em.getTransaction().commit();
             emf.close();
         }
 
-        public void deletar(CarroDAO carroDAO){
+        public void deletar(CarroEntity carroEntity){
             em.getTransaction().begin();
-            Query q = em.createNativeQuery("delete from carro where placa = '"+carroDAO.getPlaca()+"'");
+            Query q = em.createNativeQuery("delete from carro where placa = '"+ carroEntity.getPlaca()+"'");
             q.executeUpdate();
             em.getTransaction().commit();
             emf.close();
         }
 
-        public List<CarroDAO> listar(){
+        public List<CarroEntity> listar(){
             em.getTransaction().begin();
-            Query consulta = em.createQuery("select c from CarroDAO c");
-            List<CarroDAO> lista = consulta.getResultList();
+            Query consulta = em.createQuery("select c from CarroEntity c");
+            List<CarroEntity> lista = consulta.getResultList();
             em.getTransaction().commit();
             emf.close();
             return lista;
         }
 
-        public void atualizar(CarroDAO carroDAO){
+        public void atualizar(CarroEntity carroEntity){
             em.getTransaction().begin();
-            em.merge(carroDAO);
+            em.merge(carroEntity);
             em.getTransaction().commit();
             emf.close();
         }

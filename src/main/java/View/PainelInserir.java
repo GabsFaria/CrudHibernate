@@ -2,29 +2,23 @@ package View;
 
 import javax.swing.*;
 
-public class PainelInserir extends JDialog {
-    private JDialog janela;
+public class PainelInserir extends JPanel{
     private JFrame janelaInserir;
 
     public PainelInserir() {
-        janelaInserir = new JFrame();
-        janela = new JDialog(janelaInserir,"Cadastro", true);
-        janela.setContentPane(janelaInserir.getContentPane());
+        criar();
+    }
+
+    private void criar() {
+        janelaInserir = new JFrame("Cadastro");
         janelaInserir.setLayout(null);
         janelaInserir.pack();
-        janelaInserir.setSize(250,220);
-        janela.setBounds(janelaInserir.getBounds());
+        janelaInserir.setSize(250,210);
         janelaInserir.setLocationRelativeTo(null);
-        janela.setModal(true);
-        janela.setVisible(true);
-        janelaInserir.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        janelaInserir.setVisible(true);
     }
 
     public JFrame getJanelaInserir() {
         return janelaInserir;
-    }
-
-    public JDialog getJanela() {
-        return janela;
     }
 }

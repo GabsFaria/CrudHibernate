@@ -3,11 +3,11 @@ package Model;
 import javax.persistence.*;
 
 @Entity
-@Table(name ="carro")
-public class CarroDAO {
+@Table(name ="carro", schema = "crudcarro")
+public class CarroEntity {
 
     @Id
-    @SequenceGenerator(name="id",schema = "CrudCarro")
+    @SequenceGenerator(name="id", schema = "crudcarro", initialValue = 1, allocationSize = 1)
     @GeneratedValue(generator = "id",strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "nome",length = 50,nullable = false)
@@ -43,7 +43,7 @@ public class CarroDAO {
         this.marca = marca;
     }
 
-    public String getAno() {
+    public String   getAno() {
         return ano;
     }
 
@@ -57,5 +57,16 @@ public class CarroDAO {
 
     public void setPlaca(String placa) {
         this.placa = placa;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Carro{"+
+                "  nome='" + nome + '\'' +
+                ", marca='" + marca + '\'' +
+                ", ano='" + ano + '\'' +
+                ", placa='" + placa + '\'' +
+                '}';
     }
 }

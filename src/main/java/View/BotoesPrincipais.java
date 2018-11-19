@@ -14,6 +14,7 @@ public class BotoesPrincipais{
         inserir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 BotoesPainelInserir button = new BotoesPainelInserir();
+                button.botoes();
             }
         });
         painel.add(inserir);
@@ -22,6 +23,11 @@ public class BotoesPrincipais{
     public void botaoLer(){
         JButton ler = new JButton("Mostrar carros");
         ler.setBounds(200,100,150,40);
+        ler.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                PainelListar painelListar = new PainelListar();
+            }
+        });
         painel.add(ler);
     }
 
