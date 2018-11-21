@@ -4,21 +4,20 @@ import Controller.CarroController;
 import Model.CarroEntity;
 
 import javax.swing.*;
-import java.awt.*;
-import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
 public class PainelListar {
     private JFrame window;
     private JPanel panel;
     private JTable table;
+    private DefaultTableModel modelo;
 
     public PainelListar() {
         window = new JFrame("Carros Cadastrados");
         panel = new JPanel();
-        panel.setSize(500,300);
         CarroController carroController = new CarroController();
-        List<CarroEntity> list= carroController.listar();
+        final List<CarroEntity> list= carroController.listar();
         String[][] conteudo = new String[list.size()][5];
         for (int i = 0; i<list.size(); i++){
                 for (int j = 0; j<5;j++){
@@ -38,10 +37,28 @@ public class PainelListar {
 
         String[] colunas = {"Id","Nome", "Marca", "Ano", "Placa"};
 
-        table = new JTable(conteudo,colunas);
-        table.setBounds(0,10,520,250);
+        modelo = new DefaultTableModel(conteudo,colunas){
+            @Override
+            public boolean isCellEditable(int row, int column){
+                for (column = 0; column<5; column++){
+                    for (row= 0; row<list.size(); row++){
+                        if (row==0){
+                            while (row!=5){
+                                return false;
+                            }
+                        }else
+                            return true;
+                    }
+                }
+                return true;
+            }
+        };
+
+        table = new JTable(modelo);
+        table.setBounds(0,0,520,200);
 
         JScrollPane scrollPane = new JScrollPane(table);
+        panel.setSize(490,470);
         panel.add(scrollPane);
         window.setLayout(null);
         window.setLocationRelativeTo(null);
@@ -50,4 +67,13 @@ public class PainelListar {
         window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         window.add(panel);
     }
+
+    public JPanel getPanel() {
+        return panel;
+    }
+
+    public JFrame getWindow() {
+        return window;
+    }
+
 }

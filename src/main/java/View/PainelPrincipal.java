@@ -12,7 +12,7 @@ public class PainelPrincipal {
         janela.setLayout(null);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.pack();
-        janela.setSize(400,280);
+        janela.setSize(360,200);
         janela.setLocationRelativeTo(null);
         janela.setVisible(true);
     }

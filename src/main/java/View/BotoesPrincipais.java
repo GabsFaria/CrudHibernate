@@ -10,7 +10,7 @@ public class BotoesPrincipais{
 
     public void botaoInserir(){
         JButton inserir = new JButton("Novo Carro");
-        inserir.setBounds(10,100,150,40);
+        inserir.setBounds(10,40,150,40);
         inserir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 BotoesPainelInserir button = new BotoesPainelInserir();
@@ -22,7 +22,7 @@ public class BotoesPrincipais{
 
     public void botaoLer(){
         JButton ler = new JButton("Mostrar carros");
-        ler.setBounds(200,100,150,40);
+        ler.setBounds(180,40,150,40);
         ler.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 PainelListar painelListar = new PainelListar();
@@ -33,13 +33,23 @@ public class BotoesPrincipais{
 
     public void botaoEditar(){
         JButton editar = new JButton("Editar Carros");
-        editar.setBounds(10,160,150,40);
+        editar.setBounds(10,100,150,40);
+        editar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                BotoesEditar botoesEditar = new BotoesEditar();
+            }
+        });
         painel.add(editar);
     }
 
     public void botaoDeletar(){
         JButton deletar = new JButton("Excluir carro");
-        deletar.setBounds(200,160,150,40);
+        deletar.setBounds(180,100,150,40);
+        deletar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                BotoesDeletar botoesDeletar = new BotoesDeletar();
+            }
+        });
         painel.add(deletar);
     }
 
