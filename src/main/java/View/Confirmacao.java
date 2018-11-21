@@ -13,6 +13,7 @@ public class Confirmacao {
     private JFrame janelaConfirmacao;
     private JTable table;
     private DefaultTableModel modelo;
+    private Integer anoFormatado;
     private JPanel panel = new JPanel();
     private JButton confirmar = new JButton("Confirmar");
     private JButton cancelar = new JButton("Cancelar");
@@ -24,8 +25,12 @@ public class Confirmacao {
 
         carroEntity.getMarca().replace("_", "").replace("*", "").replace(",", "")
                 .replace(".", "");
-
-        Integer anoFormatado = Integer.parseInt(carroEntity.getAno().replace("/"," ").replace(" ", ""));
+        try {
+            anoFormatado = Integer.parseInt(carroEntity.getAno().replace("/"," ").replace(" ", ""));
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,"Verificar se o ano foi digitado corretamente. Exemplo(1998)");
+            return;
+        }
         try {
             carroEntity.getAno().replace("/"," ").replace(" ", "").compareTo(anoFormatado.toString());
         } catch (Exception e){
