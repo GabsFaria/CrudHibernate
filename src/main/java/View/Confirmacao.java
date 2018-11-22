@@ -13,32 +13,28 @@ public class Confirmacao {
     private JFrame janelaConfirmacao;
     private JTable table;
     private DefaultTableModel modelo;
-    private Integer anoFormatado;
     private JPanel panel = new JPanel();
     private JButton confirmar = new JButton("Confirmar");
     private JButton cancelar = new JButton("Cancelar");
 
     public void confirma(CarroEntity carroEntity) {
 
-        carroEntity.getNome().replace("_", "").replace("*", "").replace(",", "")
-                .replace(".", "");
+        Verificacao verificacao = new Verificacao(carroEntity);
+        carroEntity = verificacao.getCarroEntity1();
 
-        carroEntity.getMarca().replace("_", "").replace("*", "").replace(",", "")
-                .replace(".", "");
-        try {
-            anoFormatado = Integer.parseInt(carroEntity.getAno().replace("/"," ").replace(" ", ""));
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null,"Verificar se o ano foi digitado corretamente. Exemplo(1998)");
+        if ((carroEntity.getNome()==null || carroEntity.getNome().isEmpty())){
+            JOptionPane.showMessageDialog(null,"Verifique se o nome foi digitado corretamente. Exemplo(Gol)");
             return;
-        }
-        try {
-            carroEntity.getAno().replace("/"," ").replace(" ", "").compareTo(anoFormatado.toString());
-        } catch (Exception e){
-            JOptionPane.showMessageDialog(null,"Verificar se o ano foi digitado corretamente");
-        }
-
-        carroEntity.getPlaca().replace("_", "").replace("*", "").replace(",", "")
-                .replace(".", "");
+        } else if ((carroEntity.getMarca()==null || carroEntity.getMarca().isEmpty())) {
+            JOptionPane.showMessageDialog(null, "Verifique se a marca foi digitado corretamente. Exemplo(Volkswagen)");
+            return;
+            }else if ((carroEntity.getAno()==null || carroEntity.getAno().isEmpty())) {
+                JOptionPane.showMessageDialog(null, "Verifique se o ano foi digitado corretamente. Exemplo(1998)");
+                return;
+                } else if ((carroEntity.getPlaca()==null || carroEntity.getPlaca().isEmpty())) {
+                    JOptionPane.showMessageDialog(null, "Verifique se a placa foi digitado corretamente. Exemplo(ABC-1234)");
+                    return;
+                    }
 
         criaJanela(carroEntity);
     }

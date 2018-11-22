@@ -17,8 +17,8 @@ public class BotoesEditar {
     public BotoesEditar() {
         final CarroEntity carroEntity = new CarroEntity();
 
-        label.setText("Clique nos campos para alterá-los");
-        label.setBounds(20,50,300,20);
+        label.setText("Clique nos campos para alterá-los e aperte Enter para confirmar");
+        label.setBounds(20,40,400,20);
 
         confirmar.setBounds(240,70,100,30);
         confirmar.addActionListener(new ActionListener() {
