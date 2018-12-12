@@ -8,6 +8,7 @@ public class BotoesListar {
     PainelListar pl = new PainelListar();
     private JButton editar;
     private JButton excluir;
+    private Integer row;
 
     public BotoesListar() {
         editar = new JButton("Editar");
@@ -16,7 +17,10 @@ public class BotoesListar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 BotoesEditar botoesEditar = new BotoesEditar();
-                pl.getTable();
+                botoesEditar.pe.setOthertable(pl.getTable());
+                botoesEditar.pe.setRow(pl.getTable().getSelectedRow());
+                System.out.println(botoesEditar.pe.getRow());
+                System.out.println(botoesEditar.pe.getId());
             }
         });
 
@@ -28,4 +32,7 @@ public class BotoesListar {
         pl.getPanel().add(excluir);
     }
 
+    public Integer getRow() {
+        return row;
+    }
 }

@@ -8,11 +8,14 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
 
-public class PainelEditar extends BotoesListar{
+public class PainelEditar{
     private JFrame window;
     private JPanel panel;
     private JTable table;
+    private JTable othertable;
     private DefaultTableModel modelo;
+    private Integer row;
+    private Integer id;
 
     public PainelEditar() {
         window = new JFrame("Editar carro");
@@ -21,20 +24,16 @@ public class PainelEditar extends BotoesListar{
         String[][] conteudo = new String[1][5];
         String[] colunas = {"Id","Nome", "Marca", "Ano", "Placa"};
         List<CarroEntity> list = carroController.listar();
-        Integer id= null;
-        Integer linha = pl.getTable().getSelectedRow();
-        System.out.println(linha);
-        pl.getWindow().setVisible(false);
         try {
-//            Integer linha = pl.getTable().getSelectedRow();
-//            id = pl.getTable().getValueAt(linha,1);
+            setId((Integer) getOthertable().getValueAt(getRow(),0));
+//
         }catch (Exception e){
-            JOptionPane.showMessageDialog(null,"É necessário um valor para poder iniciar a busca");
+            JOptionPane.showMessageDialog(null,"É necessário selecionar um item para poder editar");
             return;
         }
 
         for (int i = 0; i < list.size(); i++) {
-            if ((list.get(i).getId() == id)) {
+            if ((list.get(i).getId() == getId())) {
                 conteudo[0][0] = list.get(i).getId().toString();
                 conteudo[0][1] = list.get(i).getNome();
                 conteudo[0][2] = list.get(i).getMarca();
@@ -67,11 +66,35 @@ public class PainelEditar extends BotoesListar{
         window.add(panel);
     }
 
+    public Integer getRow() {
+        return row;
+    }
+
+    public void setRow(Integer row) {
+        this.row = row;
+    }
+
     public JFrame getWindow() {
         return window;
     }
 
     public JTable getTable() {
         return table;
+    }
+
+    public void setOthertable(JTable othertable) {
+        this.othertable = othertable;
+    }
+
+    public JTable getOthertable() {
+        return othertable;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
