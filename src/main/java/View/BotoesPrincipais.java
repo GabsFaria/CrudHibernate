@@ -25,7 +25,7 @@ public class BotoesPrincipais{
         ler.setBounds(180,40,150,40);
         ler.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                PainelListar painelListar = new PainelListar();
+                BotoesListar bl = new BotoesListar();
             }
         });
         painel.add(ler);

@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
 
-public class PainelEditar {
+public class PainelEditar extends BotoesListar{
     private JFrame window;
     private JPanel panel;
     private JTable table;
@@ -22,8 +22,12 @@ public class PainelEditar {
         String[] colunas = {"Id","Nome", "Marca", "Ano", "Placa"};
         List<CarroEntity> list = carroController.listar();
         Integer id= null;
+        Integer linha = pl.getTable().getSelectedRow();
+        System.out.println(linha);
+        pl.getWindow().setVisible(false);
         try {
-            id = Integer.parseInt(JOptionPane.showInputDialog("Digite o Id que deseja alterar"));
+//            Integer linha = pl.getTable().getSelectedRow();
+//            id = pl.getTable().getValueAt(linha,1);
         }catch (Exception e){
             JOptionPane.showMessageDialog(null,"É necessário um valor para poder iniciar a busca");
             return;

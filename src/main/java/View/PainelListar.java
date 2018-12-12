@@ -4,6 +4,7 @@ import Controller.CarroController;
 import Model.CarroEntity;
 
 import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
@@ -11,7 +12,7 @@ public class PainelListar {
     private JFrame window;
     private JPanel panel;
     private JTable table;
-    private DefaultTableModel modelo;
+    private AbstractTableModel modelo;
 
     public PainelListar() {
         window = new JFrame("Carros Cadastrados");
@@ -35,9 +36,38 @@ public class PainelListar {
                 }
         }
 
-        String[] colunas = {"Id","Nome", "Marca", "Ano", "Placa"};
 
-        modelo = new DefaultTableModel(conteudo,colunas){
+        modelo = new AbstractTableModel(){
+            @Override
+            public int getRowCount() {
+                return list.size();
+            }
+
+            @Override
+            public int getColumnCount() {
+                return 5;
+            }
+
+            @Override
+            public String getColumnName(int column){
+                if (column==0){
+                    return "Id";
+                }
+                if (column==1){
+                    return "Nome";
+                }
+                if (column==2){
+                    return "Marca";
+                }
+                if (column==3){
+                    return "Ano";
+                }
+                if (column==4){
+                    return "Placa";
+                }
+                return "";
+            }
+
             @Override
             public boolean isCellEditable(int row, int column){
                 for (column = 0; column<5; column++){
@@ -52,13 +82,18 @@ public class PainelListar {
                 }
                 return true;
             }
+
+            @Override
+            public Object getValueAt(int rowIndex, int columnIndex) {
+                return null;
+            }
         };
 
         table = new JTable(modelo);
         table.setBounds(0,0,520,200);
 
         JScrollPane scrollPane = new JScrollPane(table);
-        panel.setSize(490,470);
+        panel.setSize(490,510);
         panel.add(scrollPane);
         window.setLayout(null);
         window.setLocationRelativeTo(null);
@@ -76,4 +111,7 @@ public class PainelListar {
         return window;
     }
 
+    public JTable getTable() {
+        return table;
+    }
 }
