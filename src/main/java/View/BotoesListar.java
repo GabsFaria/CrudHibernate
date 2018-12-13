@@ -17,8 +17,10 @@ public class BotoesListar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 BotoesEditar botoesEditar = new BotoesEditar();
-                botoesEditar.pe.setOthertable(pl.getTable());
-                botoesEditar.pe.setRow(pl.getTable().getSelectedRow());
+                System.out.println(botoesEditar.pe.getRow());
+                System.out.println(botoesEditar.pe.getId());
+                botoesEditar.refresh(pl.getTable().getSelectedRow(),(Integer) pl.getTable().getValueAt(pl.getTable().getSelectedRow(),0));
+                botoesEditar.iniciaBotoes();
                 System.out.println(botoesEditar.pe.getRow());
                 System.out.println(botoesEditar.pe.getId());
             }
