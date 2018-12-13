@@ -17,17 +17,24 @@ public class BotoesListar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 BotoesEditar botoesEditar = new BotoesEditar();
-                System.out.println(botoesEditar.pe.getRow());
-                System.out.println(botoesEditar.pe.getId());
-                botoesEditar.refresh(pl.getTable().getSelectedRow(),(Integer) pl.getTable().getValueAt(pl.getTable().getSelectedRow(),0));
+                botoesEditar.selectItem(pl.getTable().getSelectedRow(),(Integer) pl.getTable().getValueAt(pl.getTable().getSelectedRow(),0));
                 botoesEditar.iniciaBotoes();
-                System.out.println(botoesEditar.pe.getRow());
-                System.out.println(botoesEditar.pe.getId());
+                pl.getWindow().setVisible(false);
             }
         });
 
         excluir = new JButton("Excluir");
         excluir.setBounds(50,500,40,40);
+        excluir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                BotoesDeletar botoesDeletar = new BotoesDeletar();
+                botoesDeletar.selectItem(pl.getTable().getSelectedRow(),(Integer) pl.getTable().getValueAt(pl.getTable().getSelectedRow(),0));
+                botoesDeletar.iniciaBotoes();
+                pl.getWindow().setVisible(false);
+
+            }
+        });
 
 
         pl.getPanel().add(editar);

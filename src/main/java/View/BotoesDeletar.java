@@ -6,6 +6,7 @@ import Model.CarroEntity;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class BotoesDeletar {
     PainelDeletar painelDeletar = new PainelDeletar();
@@ -13,7 +14,7 @@ public class BotoesDeletar {
     private JButton confirmar = new JButton("Confirmar");
     private JButton cancelar = new JButton("Cancelar");
 
-    public BotoesDeletar() {
+    public void iniciaBotoes() {
         final CarroEntity carroEntity = new CarroEntity();
 
         confirmar.setBounds(240,60,100,30);
@@ -27,6 +28,8 @@ public class BotoesDeletar {
                 CarroController carroController = new CarroController();
                 carroController.deletar(carroEntity);
                 painelDeletar.getWindow().setVisible(false);
+                BotoesListar bl = new BotoesListar();
+                bl.pl.getTable().updateUI();
             }
         });
 
@@ -39,5 +42,25 @@ public class BotoesDeletar {
 
         painelDeletar.getWindow().add(confirmar);
         painelDeletar.getWindow().add(cancelar);
+    }
+
+    public void selectItem(int row, Integer id){
+        CarroController carroController = new CarroController();
+        List<CarroEntity> list = carroController.listar();
+        String[][] conteudo = new String[1][5];
+        painelDeletar.setRow(row);
+        painelDeletar.setId(id);
+
+        for (int i = 0; i < list.size(); i++) {
+            if ((list.get(i).getId() == painelDeletar.getId())) {
+                conteudo[0][0] = list.get(i).getId().toString();
+                conteudo[0][1] = list.get(i).getNome();
+                conteudo[0][2] = list.get(i).getMarca();
+                conteudo[0][3] = list.get(i).getAno();
+                conteudo[0][4] = list.get(i).getPlaca();
+            }
+        }
+        painelDeletar.setConteudo(conteudo);
+        painelDeletar.iniciaPainel();
     }
 }

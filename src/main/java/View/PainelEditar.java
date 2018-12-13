@@ -13,7 +13,8 @@ public class PainelEditar{
     private Integer id;
     private String[][] conteudo = new String[1][5];
 
-    public PainelEditar() {
+
+    public void iniciaPainel(){
         window = new JFrame("Editar carro");
         panel = new JPanel();
         table = iniciaTabela(getConteudo());
@@ -32,7 +33,6 @@ public class PainelEditar{
 
     public JTable iniciaTabela(String[][] conteudo){
         String[] colunas = {"Id","Nome", "Marca", "Ano", "Placa"};
-        System.out.println(getId());
        try {
            getId();
         }catch (Exception e){

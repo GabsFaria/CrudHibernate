@@ -7,13 +7,11 @@ public class TextoPainelPrincipal {
 
     public void inserirTexto(){
         JLabel text = new JLabel();
-        text.setText("Esse é um sistema de gerenciamente de carros ");
-        text.setBounds(10,10,300,15);
+        text.setText("Sistema de gerenciamente de carros ");
+        text.setBounds(10,15,300,15);
         b.painel.add(text);
         b.botaoInserir();
         b.botaoLer();
-        b.botaoEditar();
-        b.botaoDeletar();
     }
 
 }

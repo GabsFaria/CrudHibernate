@@ -33,6 +33,8 @@ public class BotoesEditar {
                 CarroController carroController = new CarroController();
                 carroController.atualizar(carroEntity);
                 pe.getWindow().setVisible(false);
+                BotoesListar bl = new BotoesListar();
+                bl.pl.getTable().updateUI();
             }
         });
 
@@ -48,7 +50,7 @@ public class BotoesEditar {
         pe.getWindow().add(cancelar);
     }
 
-    public void refresh(int row, Integer id){
+    public void selectItem(int row, Integer id){
         CarroController carroController = new CarroController();
         List<CarroEntity> list = carroController.listar();
         String[][] conteudo = new String[1][5];
@@ -65,7 +67,6 @@ public class BotoesEditar {
             }
         }
         pe.setConteudo(conteudo);
-        pe.getTable().repaint();
-        pe.getTable().updateUI();
+        pe.iniciaPainel();
     }
 }
